@@ -74,7 +74,7 @@ const props = withDefaults(defineProps<Props>(), {
       </div>
       
       <!-- Cards Grid -->
-      <div class="flex flex-wrap lg:flex-nowrap -ml-[15px] -mr-[15px] mt-0 box-border gap-2 sm:gap-3">
+      <div class="flex flex-wrap lg:flex-nowrap -ml-[15px] -mr-[15px] mt-0 box-border gap-2 sm:gap-3 px-4 sm:px-0">
         <Card
           v-for="(service, index) in services"
           :key="service.id"
@@ -85,7 +85,7 @@ const props = withDefaults(defineProps<Props>(), {
             class="block relative mb-[30px] box-border shadow-none no-underline overflow-hidden bg-transparent lg:mb-0 w-full"
           >
             <!-- Image Container -->
-            <div class="relative w-full h-[480px] sm:h-[480px] lg:h-[480px] xl:h-[550px] overflow-hidden flex-shrink-0">
+            <div class="relative w-full h-[520px] sm:h-[540px] lg:h-[520px] xl:h-[580px] overflow-hidden flex-shrink-0">
               <img 
                 :src="service.image" 
                 :alt="service.title"

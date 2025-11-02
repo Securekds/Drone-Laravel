@@ -100,8 +100,8 @@ const getServiceIcon = (iconName: string): string => {
 
 
 <template>
-  <section class="pt-24 pb-24 sm:pt-36 sm:pb-32 xl:pb-32">
-    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+  <section class="py-20 font-roboto relative w-full mx-auto box-border">
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl box-border">
       <!-- Section Header -->
       <div class="relative pb-[61px] box-border">
         <div class="p-0 relative font-bold box-border leading-[1.1] ![margin-top:0] [font-size:14px] tracking-[-0.03em] text-[oklch(37.754%0.15587_274.67)] lg:[font-size:16px]">
@@ -115,12 +115,12 @@ const getServiceIcon = (iconName: string): string => {
       </div>
       
       <!-- Services Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-16 xl:gap-y-20">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-16">
         <!-- Service Items using Shadcn Card -->
         <Card 
           v-for="service in services" 
           :key="service.id"
-          class="group relative pl-10 border-0 shadow-none p-0 gap-0 hover:-translate-y-1 transition-transform duration-200"
+          class="group relative pl-10 border-0 shadow-none p-0 gap-0 hover:-translate-y-1 transition-transform duration-200 !flex-none"
         >
           <a :href="service.link" class="block">
             <!-- Left border line -->
@@ -141,7 +141,7 @@ const getServiceIcon = (iconName: string): string => {
       </div>
 
       <!-- Description Sections -->
-      <div class="flex flex-col lg:flex-row gap-8 w-full mt-16 xl:mt-20">
+      <div class="flex flex-col lg:flex-row gap-8 w-full mt-16">
         <!-- Description Section 1 -->
         <div class="w-full lg:w-1/2">
           <div class="leading-[1.4] text-[22px] font-bold" :style="{ color: sectionData.accentColor }">

@@ -155,7 +155,7 @@ const goToSlide = (index: number): void => {
 
 
 <template>
-  <section class="min-h-screen bg-white overflow-x-hidden">
+  <section class="bg-white overflow-x-hidden">
     <!-- Hero Section -->
     <div class="relative min-h-[800px] xl:min-h-[871px] h-[800px] xl:h-[871px] mb-0 overflow-x-hidden font-roboto">
       <Carousel 
@@ -254,7 +254,7 @@ const goToSlide = (index: number): void => {
     </CarouselContent>
 
         <!-- MOBILE SLIDER SECTION -->
-        <div class="absolute bottom-[310px] left-0 right-40 z-40 lg:hidden">
+        <div class="absolute bottom-[calc(200px+120px)] sm:bottom-[calc(242px+130px)] left-0 right-0 z-40 lg:hidden pb-4">
           <div class="container mx-auto px-4">
             <div class="flex items-center justify-center gap-4 sm:gap-6">
               <!-- Slider Dots -->
