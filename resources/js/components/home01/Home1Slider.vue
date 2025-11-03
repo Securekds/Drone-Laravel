@@ -60,9 +60,9 @@ const props = withDefaults(defineProps<Props>(), {
   contactData: () => ({
     address: '5961 Santa Fe Ave, Huntington<br>Park, CA 90255, USA',
     phone: '+1 800 341 41 41   +1 800 834 62 74',
-    email: 'info@quadron.co',
+    email: 'info@quadron.com',
     videoLink: '#',
-    videoThumbnail: 'https://quadrone.ninetheme.com/wp-content/uploads/2019/10/custom-layout04-img03.jpg'
+    videoThumbnail: 'https://quadrone.ninetheme.com/wp-content/uploads/2019/11/promobox-slider.jpg'
   }),
   socialLinks: () => [
     { name: 'Facebook', url: '#', icon: 'mdi:facebook' },
@@ -78,12 +78,12 @@ const carouselApi = ref<CarouselApi>()
 const heroSlides = ref<HeroSlide[]>([
   {
     id: 1,
-    subtitle: 'Quadrone Air',
-    title: 'The Ultraportable<br>Drone for the Best Video',
-    description: 'The ultraportable Mavic Air features high-end flight performance and functionality for limitless exploration.',
-    backgroundImage: 'https://quadrone.ninetheme.com/wp-content/uploads/2019/11/main-slider-01.jpg',
+    subtitle: 'Qadron Spark Controller Combo',
+    title: 'The Ultraportable <br />Drone for the Best Video',
+    description: 'The ultraportable Copter features high-end flight performance and functionality for limitless exploration',
+    backgroundImage: 'https://quadrone.ninetheme.com/wp-content/uploads/2019/11/main-slider-01.png',
     ctaText: 'DISCOVER',
-    ctaLink: '#',
+    ctaLink: 'https://quadrone.ninetheme.com/contact',
     alignment: 'left',
     droneImage: {
       position: 'left'
@@ -105,7 +105,7 @@ const heroSlides = ref<HeroSlide[]>([
     subtitle: 'Quadrone Air',
     title: 'The Best Video <br>Camera for Copters',
     description: 'The ultraportable Mavic Air features high-end flight performance and functionality for limitless exploration.',
-    backgroundImage: 'https://quadrone.ninetheme.com/wp-content/uploads/2019/11/main-slider-03.jpg',
+    backgroundImage: 'https://quadrone.ninetheme.com/wp-content/uploads/2019/12/main-slider-03.jpg',
     ctaText: 'DISCOVER',
     ctaLink: '#',
     alignment: 'right',
@@ -157,7 +157,7 @@ const goToSlide = (index: number): void => {
 <template>
   <section class="bg-white overflow-x-hidden">
     <!-- Hero Section -->
-    <div class="relative min-h-[800px] xl:min-h-[871px] h-[800px] xl:h-[871px] mb-0 overflow-x-hidden font-roboto">
+    <div class="relative min-h-[800px] xl:min-h-[871px] h-[800px] xl:h-[871px] mb-0 overflow-x-hidden font-roboto ">
       <Carousel 
         :opts="{ loop: true, skipSnaps: false }"
         @init-api="onCarouselInit"
@@ -175,14 +175,47 @@ const goToSlide = (index: number): void => {
                 <img 
                   :src="slide.backgroundImage" 
                   alt="Drone Background" 
-                  class="w-full h-full object-cover md:h-[500px] lg:h-full max-h-[750px] lg:max-h-none object-center"
+                  :class="[
+                    'w-full object-center',
+                    index === 0
+                      ? 'h-[580px] sm:h-[560px] md:h-[500px] lg:h-full max-h-[420px] sm:max-h-[500px] object-contain'
+                      : 'h-full md:h-[500px] lg:h-full max-h-[750px] object-cover'
+                  ]"
                 />
               </div>
               
+              
               <!-- Hero Content -->
               <div class="relative z-20 h-full flex items-center w-full max-w-full overflow-hidden">
-                <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-                  <div class="max-w-6xl w-full">
+                <div class="container mx-auto pr-4 sm:pr-6 lg:pr-8 pl-4 sm:pl-6 lg:pl-0 h-full flex items-center w-full relative">
+                  <!-- Mobile-only vertical Gray line (First Slide Only) -->
+                  <div v-if="index === 0" class="absolute top-0 bottom-0 left-4 sm:left-6 lg:left-8 w-[1px] bg-gray-300 sm:hidden"></div>
+                  <!-- Vertical Lines Background (First Slide Only) -->
+                  <div
+                    v-if="index === 0"
+                    class="absolute inset-0 bg-[url('https://quadrone.ninetheme.com/wp-content/plugins/quadron-elementor-addons/assets/front/img/sectionbg_vertical_line.png')] bg-repeat-y bg-left-top z-0"
+                  ></div>
+                  <!-- First Slide Custom Content -->
+                  <div v-if="index === 0" class="w-full max-w-7xl flex items-center justify-start h-full pr-[55px] pl-0 relative z-10">
+                    <div class="pr-3.5 pl-0 w-full min-[576px]:max-w-[34.13rem] md:max-w-[45.00rem] min-[992px]:max-w-[60.00rem] min-[1200px]:max-w-[71.25rem] min-[791px]:max-w-[48.13rem] min-[1025px]:max-w-[61.88rem] min-[1230px]:max-w-[75.00rem] text-left mt-[-220px] md:mt-0" id="div-1">
+                      <div class="pb-8">
+                        <div class="text-indigo-900 border-l-2 font-bold py-1 pl-3 border-indigo-900 border-solid text-[16px] sm:text-[18px] lg:text-[20px] min-[791px]:pt-1 min-[791px]:pr-0 min-[791px]:pb-1 min-[791px]:pl-5">Qadron Spark Controller Combo</div>
+                        <div class="text-zinc-800 font-bold mt-5 min-[791px]:mt-7 leading-[1.48] tracking-[-0.02em] text-[25px] md:text-[29px] md:leading-[39px] lg:text-[35px] lg:leading-[45px] xl:text-[60px] xl:leading-[65px]">The Ultraportable <br />Drone for the Best Video</div>
+                        <div class="mt-3 min-[1230px]:mt-5 text-[12px] md:text-[14px] lg:text-[15px] xl:text-[17px] max-w-[215px] md:max-w-[310px] xl:max-w-[495px]">The ultraportable Copter features high-end flight performance and functionality for limitless exploration</div>
+                        <a :href="heroSlides[0].ctaLink" class="text-indigo-900 content-center items-center text-base font-bold justify-start inline-flex mt-5 min-[791px]:mt-5 min-[1025px]:mt-7 min-[1230px]:mt-10 group">
+                          <i class="content-center items-center cursor-pointer justify-center pr-1 flex w-12 h-12 min-w-[3.13rem] min-h-[3.13rem] mr-3.5 border-2 border-zinc-300 border-solid rounded-full group-hover:bg-indigo-900 transition-all duration-300">
+                            <svg class="button-icon w-5 h-5 text-indigo-900 group-hover:text-white transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                          </i>
+                          <span class="cursor-pointer">DISCOVER</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Other Slides Default Content -->
+                  <div v-else class="max-w-6xl w-full">
                     <!-- Text Content -->
                     <div 
                       :class="[
@@ -316,7 +349,7 @@ const goToSlide = (index: number): void => {
         </div>
 
         <!-- MOBILE INFO BAR -->
-        <div class="absolute bottom-0 left-0 right-0 z-30 bg-[#1b2337] lg:hidden overflow-hidden">
+        <div class="absolute bottom-0 left-0 right-0 z-30 bg-indigo-900 lg:hidden overflow-hidden">
           <div class="max-w-full mx-auto flex flex-col items-center justify-center h-full p-0 gap-4 sm:gap-6 mt-0">
             <!-- Video Container -->
             <div class="w-full h-[200px] sm:h-[242px] relative overflow-hidden">
@@ -340,13 +373,16 @@ const goToSlide = (index: number): void => {
             </div>
 
             <!-- Contact Information -->
-            <div class="contact-info-mobile flex flex-wrap items-start justify-start text-left gap-4 w-full p-4 mt-0">
-              <address class="font-normal m-0">
-                <span class="block text-white text-[12px] leading-[1.5] font-roboto" v-html="contactData.address"></span>
+            <div class="contact-info-mobile flex flex-nowrap items-center justify-between text-left gap-2 w-full p-6 mt-0">
+              <address class="font-normal m-0 w-1/2 min-w-0">
+                <span class="block text-white text-[12px] leading-[1.5] font-roboto">5961 Santa Fe Ave,</span>
+                <span class="block text-white text-[12px] leading-[1.5] font-roboto">Huntington</span>
+                <span class="block text-white text-[12px] leading-[1.5] font-roboto">Park, CA 90255, USA</span>
               </address>
               
-              <address class="font-normal m-0">
-                <span class="block text-white text-[12px] leading-[1.5] font-roboto" v-html="contactData.phone"></span>
+              <address class="font-normal m-0 w-1/2 min-w-0 text-right">
+                <span class="block text-white text-[12px] leading-[1.5] font-roboto">+1 800 834 62 74</span>
+                <span class="block text-white text-[12px] leading-[1.5] font-roboto">+1 800 834 62 74</span>
                 <Button as-child variant="link" class="email-link-mobile font-roboto p-0 h-auto text-[12px] leading-[1.5] text-white">
                   <a :href="`mailto:${contactData.email}`">
                     {{ contactData.email }}
@@ -357,119 +393,86 @@ const goToSlide = (index: number): void => {
           </div>
         </div>
 
-        <!-- DESKTOP INFO BAR -->
-        <div class="absolute bottom-0 left-0 right-0 z-30 py-6 hidden lg:block lg:h-[122px] lg:py-[1.7rem]">
-          <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col items-center justify-center lg:flex lg:flex-row lg:justify-between lg:items-center gap-4 lg:gap-6">
-            <!-- Background for contact info and video only -->
-            <div class="absolute inset-0 bg-gradient-to-r from-[#1b2337] via-[#1b2337] to-transparent pointer-events-none z-0" style="width: calc(100% - 200px);"></div>
-            
-            <!-- Contact Information -->
-            <div class="contact-info hidden lg:flex lg:min-w-0 lg:max-w-full lg:gap-8 xl:gap-12 lg:text-left lg:items-start lg:order-1 lg:flex-1 relative z-10">
-              <address class="font-normal m-0">
-                <span class="block text-white text-[12px] leading-[1.5] lg:text-[14px] font-roboto" v-html="contactData.address"></span>
-              </address>
-              
-              <address class="font-normal m-0">
-                <span class="block text-white text-[12px] leading-[1.5] lg:text-[14px] font-roboto" v-html="contactData.phone"></span>
-                <Button as-child variant="link" class="info-text email-link font-roboto p-0 h-auto text-[12px] leading-[1.5] lg:text-[14px] text-white">
-                  <a :href="`mailto:${contactData.email}`">
-                    {{ contactData.email }}
-                  </a>
-                </Button>
-              </address>
+       
+  </Carousel>
+      
+      <!-- DESKTOP INFO BAR (moved outside slider) -->
+      <div
+        class="absolute bottom-0 left-0 right-0 z-30 hidden lg:block lg:h-[142px]"
+      >
+        <div class="container mx-auto pr-4 sm:pr-6 lg:pr-8 pl-0 h-full">
+          <div class="h-full w-full flex items-stretch justify-between">
+            <!-- Promo Image Section -->
+            <div class="h-full flex-shrink-0">
+              <a
+                href="https://www.dailymotion.com/video/xxgmlg#.UV71MasY3wE"
+                class="block h-full"
+              >
+                <img
+                  src="https://quadrone.ninetheme.com/wp-content/uploads/2019/11/promobox-slider.jpg"
+                  alt="Promo video"
+                  class="h-full w-auto object-cover"
+                />
+              </a>
             </div>
 
-            <!-- Video Thumbnail -->
-            <div class="video-thumbnail hidden lg:block lg:w-[240px] xl:w-[260px] lg:max-w-full lg:flex-shrink-0 lg:order-2 relative z-10">
-              <Button as-child variant="ghost" class="w-full p-0 h-auto hover:bg-transparent">
-                <a :href="contactData.videoLink" class="group relative block w-full">
-                  <!-- Play Button Overlay -->
-                  <div class="absolute inset-0 flex items-center justify-center bg-black/30">
-                    <div class="w-[50px] h-[50px] lg:w-[60px] lg:h-[60px] rounded-full bg-blue-500/80 border border-blue-500/80 flex items-center justify-center">
-                      <div class="w-0 h-0 border-t-[8px] border-b-[8px] border-l-[12px] lg:border-t-[10px] lg:border-b-[10px] lg:border-l-[16px] border-t-transparent border-b-transparent border-l-white ml-1"></div>
-                    </div>
+            <!-- Right Side Strip with Background -->
+            <div class="flex-1 h-full bg-indigo-900 flex items-center justify-between pl-8">
+              <!-- Contact Information -->
+              <div class="flex flex-col lg:flex-row gap-8 text-white flex-1 justify-center items-center">
+                <!-- Address -->
+                <div class="relative flex flex-col">
+                  <div class="flex items-baseline gap-3">
+                    <span class="w-10 h-[1px] bg-blue-500"></span>
+                    <span class="text-sm font-medium leading-tight w-72" v-html="contactData.address"></span>
                   </div>
-                  
-                  <!-- Thumbnail Image -->
-                  <img 
-                    :src="contactData.videoThumbnail" 
-                    alt="Watch our video" 
-                    class="w-full h-[110px] lg:h-[122px] object-cover"
-                  />
-                </a>
-              </Button>
-            </div>
-
-            <!-- Desktop Slider Controls -->
-            <div class="slider-desktop-controls hidden lg:flex lg:items-center lg:gap-4 xl:gap-5 lg:order-3">
-              <!-- Slider dots and navigation buttons -->
-              <div class="flex items-center gap-3 xl:gap-4">
-                <div class="flex gap-3 xl:gap-4">
-                  <Button
-                    v-for="(slide, index) in heroSlides" 
-                    :key="slide.id" 
-                    variant="ghost"
-                    class="flex flex-col items-center gap-2 h-9 justify-center px-1 py-0 hover:bg-transparent"
-                    @click="goToSlide(index)"
-                  >
-                    <span 
-                      class="text-[14px] font-medium transition-colors duration-300 font-roboto"
-                      :class="currentSlide === index ? 'text-white' : 'text-white/60'"
-                    >
-                      {{ (index + 1).toString().padStart(2, '0') }}
-                    </span>
-                    <span 
-                      class="w-full h-[3px] bg-white transition-all duration-300"
-                      :class="currentSlide === index ? 'w-full' : 'w-0'"
-                    ></span>
-                  </Button>
                 </div>
-                
-                <div class="flex gap-2 xl:gap-3 items-center h-9">
-                  <Button 
-                    variant="ghost" 
-                    size="icon"
-                    class="rounded-full w-8 h-8 xl:w-9 xl:h-9 hover:bg-transparent"
-                    @click="prevSlide"
-                  >
-                    <svg class="w-4 h-4 xl:w-5 xl:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </Button>
-                  
-                  <Button 
-                    variant="ghost" 
-                    size="icon"
-                    class="rounded-full w-8 h-8 xl:w-9 xl:h-9 hover:bg-transparent"
-                    @click="nextSlide"
-                  >
-                    <svg class="w-4 h-4 xl:w-5 xl:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Button>
+
+                <!-- Phone + Email -->
+                <div class="relative flex flex-col">
+                  <div class="flex items-baseline gap-3">
+                    <span class="w-10 h-[1px] bg-blue-500"></span>
+                    <span class="text-sm font-medium leading-tight w-72" v-html="contactData.phone"></span>
+                  </div>
+                  <span class="text-sm font-medium leading-tight w-72 pl-[43px]">
+                    <a class="inline-block hover:underline" :href="`mailto:${contactData.email}`">
+                      {{ contactData.email }}
+                    </a>
+                  </span>
                 </div>
               </div>
 
-              <!-- Social Icons - Column layout aligned to the right -->
-              <div class="hidden lg:flex flex-col gap-2 items-center -mt-[130px] relative z-50">
-                <Button
-                  v-for="social in socialLinks" 
-                  :key="social.name"
-                  as-child
-                  variant="ghost"
-                  size="icon"
-                  class="w-10 h-10 xl:w-12 xl:h-12 border border-white/20 hover:bg-transparent"
-                  style="border-radius: 50px;"
-                >
-                  <a :href="social.url">
-                    <Icon :icon="social.icon" class="w-4 h-4 xl:w-5 xl:h-5 text-white" />
+              <!-- Social Icons -->
+              <ul class="flex items-center justify-end gap-3 pr-8">
+                <li>
+                  <a
+                    href="https://facebook.com"
+                    class="flex items-center justify-center w-10 h-10 border border-slate-400 rounded-full hover:bg-white/20 transition-colors"
+                  >
+                    <Icon icon="mdi:facebook" class="w-4 h-4 text-white" />
                   </a>
-                </Button>
-              </div>
+                </li>
+                <li>
+                  <a
+                    href="https://twitter.com"
+                    class="flex items-center justify-center w-10 h-10 border border-slate-400 rounded-full hover:bg-white/20 transition-colors"
+                  >
+                    <Icon icon="mdi:twitter" class="w-4 h-4 text-white" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://instagram.com"
+                    class="flex items-center justify-center w-10 h-10 border border-slate-400 rounded-full hover:bg-white/20 transition-colors"
+                  >
+                    <Icon icon="mdi:instagram" class="w-4 h-4 text-white" />
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-  </Carousel>
+      </div>
     </div>
   </section>
 </template>
