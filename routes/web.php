@@ -23,6 +23,20 @@ Route::get('/about-us', function () {
 })->name('about');
 
 
+Route::get('/awesome-services', function () {
+    return Inertia::render('services/Services');
+})->name('services');
+
+Route::get('/service-details', function () {
+    return Inertia::render('servicedetails/service-details');
+})->name('servicedetails');
+
+
+Route::get('/drone-pilot-training', function () {
+    return Inertia::render('trainingpilot/training-pilot');
+})->name('trainingpilot');
+
+
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

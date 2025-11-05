@@ -73,7 +73,7 @@ const onCarouselInit = (api: CarouselApi) => {
 
 <template>
   <section
-    class="bg-gray-100 text-zinc-500 font-black text-lg leading-7 overflow-x-hidden pb-8"
+    class="bg-gray-100 text-zinc-500 font-black text-lg leading-7 overflow-x-hidden pb-8 font-roboto"
     style="background-position: 50% 0%"
   >
     <!-- Section Wrapper -->
@@ -99,12 +99,67 @@ const onCarouselInit = (api: CarouselApi) => {
             {{ heading }}
           </h3>
 
-          <!-- Navigation Arrows - positioned in header but control carousel via API -->
-          <div class="absolute right-0 top-[3.5rem] min-[1340px]:top-1/2 min-[1340px]:-translate-y-1/2 min-[1340px]:right-[-5%] min-[1600px]:right-[-7%] text-indigo-900 z-10">
+          
+        </div>
+
+        <!-- Blog Posts Carousel -->
+        <div class="relative lg:flex lg:items-center overflow-x-hidden">
+          <div class="flex-1">
+            <Carousel
+              :opts="{
+                align: 'start',
+                loop: false,
+                slidesToScroll: 1,
+              }"
+              @init-api="onCarouselInit"
+              class="w-full relative"
+            >
+              <div class="cursor-grab text-indigo-900 overflow-hidden">
+                <CarouselContent class="-ml-3.5">
+                  <CarouselItem
+                    v-for="post in blogPosts"
+                    :key="post.id"
+                    class="pl-3.5 basis-full max-[640px]:basis-full max-[790px]:basis-1/2 min-[791px]:basis-1/3"
+                  >
+                    <Card class="group border-0 shadow-none p-0 bg-transparent overflow-hidden">
+                      <a :href="post.link" class="block">
+                        <CardContent class="p-0 relative">
+                          <div class="relative inline-block mt-6 mb-3 overflow-hidden bg-gray-100 transition-transform duration-300 hover:-translate-y-1 w-full max-w-[20rem] max-[790px]:max-w-[18rem] max-[790px]:mx-auto shadow-[0px_3px_14px_rgba(17,19,91,0.2)] before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[14px] before:bg-[#2e3192]">
+                            <figure class="cursor-pointer m-0 relative overflow-hidden">
+                              <img
+                                :src="post.image"
+                                :alt="post.title"
+                                class="w-full max-w-full transition-transform duration-300 group-hover:scale-105"
+                              />
+                              <div
+                                class="absolute top-0 left-0 w-full h-full flex flex-col items-end justify-end p-8 font-black bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,white_90%)] group-hover:bg-gradient-to-t group-hover:from-indigo-900/90 group-hover:to-transparent transition-all duration-300"
+                              >
+                                <div
+                                  class="w-full text-zinc-500 group-hover:text-white transition-colors duration-300"
+                                >
+                                  {{ post.date }}
+                                </div>
+                                <h4
+                                  class="w-full text-zinc-800 group-hover:text-white text-[1.625rem] leading-8 mt-3 mb-2 transition-colors duration-300"
+                                >
+                                  {{ post.title }}
+                                </h4>
+                              </div>
+                            </figure>
+                          </div>
+                        </CardContent>
+                      </a>
+                    </Card>
+                  </CarouselItem>
+                </CarouselContent>
+              </div>
+            </Carousel>
+          </div>
+          <!-- Right-side vertical arrows -->
+          <div class="hidden lg:flex flex-col justify-center space-y-4 lg:pl-8">
             <button
               @click="carouselApi?.scrollPrev()"
-              class="absolute bg-white cursor-pointer w-12 h-12 border-2 border-zinc-300 rounded-full hover:bg-indigo-900 hover:border-indigo-900 min-[1340px]:right-0 min-[1340px]:mt-1 group flex items-center justify-center transition-all duration-300"
-              style="right: 5rem;"
+              class="bg-white cursor-pointer w-12 h-12 border-2 border-zinc-300 rounded-full hover:bg-indigo-900 hover:border-indigo-900 group flex items-center justify-center transition-all duration-300"
             >
               <svg
                 class="w-5 h-5 text-indigo-900 group-hover:text-white transition-colors duration-300 pr-1.5"
@@ -118,8 +173,7 @@ const onCarouselInit = (api: CarouselApi) => {
             </button>
             <button
               @click="carouselApi?.scrollNext()"
-              class="absolute bg-white cursor-pointer w-12 h-12 border-2 border-zinc-300 rounded-full hover:bg-indigo-900 hover:border-indigo-900 min-[1340px]:right-0 min-[1340px]:-mt-14 group flex items-center justify-center transition-all duration-300"
-              style="right: 0.875rem;"
+              class="bg-white cursor-pointer w-12 h-12 border-2 border-zinc-300 rounded-full hover:bg-indigo-900 hover:border-indigo-900 group flex items-center justify-center transition-all duration-300"
             >
               <svg
                 class="w-5 h-5 text-indigo-900 group-hover:text-white transition-colors duration-300 pr-1"
@@ -132,60 +186,6 @@ const onCarouselInit = (api: CarouselApi) => {
               </svg>
             </button>
           </div>
-        </div>
-
-        <!-- Blog Posts Carousel -->
-        <div class="relative">
-          <Carousel
-            :opts="{
-              align: 'start',
-              loop: false,
-              slidesToScroll: 1,
-            }"
-            @init-api="onCarouselInit"
-            class="w-full relative"
-          >
-
-            <div class="cursor-grab  text-indigo-900 overflow-hidden">
-              <CarouselContent class="-ml-3.5">
-              <CarouselItem
-                v-for="post in blogPosts"
-                :key="post.id"
-                class="pl-3.5 basis-full max-[640px]:basis-full max-[790px]:basis-1/2 min-[791px]:basis-1/3"
-              >
-                <Card class="group border-0 shadow-none p-0 bg-transparent overflow-hidden">
-                  <a :href="post.link" class="block">
-                    <CardContent class="p-0 relative">
-                      <div class="relative inline-block mt-6 mb-3 overflow-hidden bg-gray-100 transition-transform duration-300 hover:-translate-y-1 w-80 max-w-full max-[790px]:max-w-[18rem] max-[790px]:mx-auto max-[640px]:max-w-[20rem]">
-                        <figure class="cursor-pointer m-0 relative overflow-hidden">
-                          <img
-                            :src="post.image"
-                            :alt="post.title"
-                            class="w-80 max-w-full transition-transform duration-300 group-hover:scale-105 max-[790px]:w-full"
-                          />
-                          <div
-                            class="absolute top-0 left-0 w-full h-full flex flex-col items-end justify-end p-8 font-black bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,white_90%)] group-hover:bg-gradient-to-t group-hover:from-indigo-900/90 group-hover:to-transparent transition-all duration-300"
-                          >
-                            <div
-                              class="w-full text-zinc-500 group-hover:text-white transition-colors duration-300"
-                            >
-                              {{ post.date }}
-                            </div>
-                            <h4
-                              class="w-full text-zinc-800 group-hover:text-white text-[1.625rem] leading-8 mt-3 mb-2 transition-colors duration-300"
-                            >
-                              {{ post.title }}
-                            </h4>
-                          </div>
-                        </figure>
-                      </div>
-                    </CardContent>
-                  </a>
-                </Card>
-              </CarouselItem>
-            </CarouselContent>
-            </div>
-          </Carousel>
         </div>
 
         <!-- More Articles Button -->
@@ -218,5 +218,9 @@ const onCarouselInit = (api: CarouselApi) => {
   </section>
 </template>
 
-<style scoped>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap');
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
 </style>
