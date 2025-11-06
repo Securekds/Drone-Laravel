@@ -75,6 +75,45 @@ Route::get('/cases', function () {
     return Inertia::render('cases/cases');
 })->name('cases');
 
+Route::get('/cases-details', function () {
+    return Inertia::render('casesdetails/cases-details');
+})->name('casesdetails');
+
+Route::get('/shop', function () {
+    return Inertia::render('shop/shop');
+})->name('shop');
+
+Route::get('/single-product', function () {
+    return Inertia::render('singleproduct/single-product');
+})->name('singleproduct');
+
+
+Route::get('/cart-2', function () {
+    return Inertia::render('cart-2/ckeckoutcart');
+})->name('singleproduct');
+
+
+Route::get('/my-account-2', function () {
+    return Inertia::render('my-account-2/myaccount');
+})->name('my-account-2');
+
+
+
+Route::get('/blog', function () {
+    return Inertia::render('blog/blog');
+})->name('blog');
+
+
+Route::get('/single-blog', function () {
+    return Inertia::render('singleblog/single-blog');
+})->name('singleblog');
+
+
+Route::get('/contact', function () {
+    return Inertia::render('contact/contact');
+})->name('contact');
+
+
 
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');

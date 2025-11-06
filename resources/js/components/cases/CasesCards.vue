@@ -94,8 +94,8 @@ const props = withDefaults(defineProps<Props>(), {
                           </div>
                         </div>
                         
-                        <!-- Overlay Content (white filter by default, blue on hover) -->
-                        <div class="absolute top-0 left-0 flex h-full w-full flex-col items-end justify-end bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,white_90%)] p-6 lg:p-8 transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-indigo-900/90 group-hover:to-transparent">
+                        <!-- Overlay Content (hidden on mobile; enabled from md+) -->
+                        <div class="hidden md:flex absolute top-0 left-0 h-full w-full flex-col items-end justify-end bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,white_90%)] p-6 lg:p-8 transition-all duration-300 group-hover:bg-gradient-to-t group-hover:from-indigo-900/90 group-hover:to-transparent">
                           <div class="w-full text-zinc-500 transition-colors duration-300 group-hover:text-white">
                             <span v-if="project.category" class="text-sm font-medium">{{ project.category }}</span>
                           </div>
@@ -104,8 +104,11 @@ const props = withDefaults(defineProps<Props>(), {
                           </h3>
                         </div>
 
-                        <!-- Default Title (Visible on mobile) -->
+                        <!-- Mobile: show category and title directly under the image -->
                         <div class="md:hidden mt-3.5">
+                          <div v-if="project.category" class="mb-1">
+                            <span class="text-zinc-500 text-sm font-medium">{{ project.category }}</span>
+                          </div>
                           <h3 class="text-[1.63rem] leading-8 text-zinc-800 font-bold">
                             {{ project.title }}
                           </h3>
@@ -122,10 +125,3 @@ const props = withDefaults(defineProps<Props>(), {
     </div>
   </section>
 </template>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap');
-.font-roboto {
-  font-family: 'Roboto', sans-serif;
-}
-</style>

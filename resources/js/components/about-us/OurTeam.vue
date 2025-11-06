@@ -163,11 +163,5 @@ const iconPath = (name: Social['icon']) => {
   </section>
 </template>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap');
-.font-roboto {
-  font-family: 'Roboto', sans-serif;
-}
-</style>
 
 

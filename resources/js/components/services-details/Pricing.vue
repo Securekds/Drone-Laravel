@@ -155,11 +155,6 @@ const props = withDefaults(defineProps<Props>(), {
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800&display=swap');
-
-.font-roboto {
-  font-family: 'Roboto', sans-serif;
-}
 
 .icon-filter {
   filter: brightness(0) saturate(100%) invert(18%) sepia(89%) saturate(2378%) hue-rotate(228deg) brightness(98%) contrast(95%);
