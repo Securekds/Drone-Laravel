@@ -36,6 +36,45 @@ Route::get('/drone-pilot-training', function () {
     return Inertia::render('trainingpilot/training-pilot');
 })->name('trainingpilot');
 
+Route::get('/explore-drone-platform', function () {
+    return Inertia::render('droneplatform/drone-platform');
+})->name('droneplatform');
+
+Route::get('/frequently-asked-questions', function () {
+    return Inertia::render('askedquestions/asked-questions');
+})->name('askedquestions');
+
+Route::get('/gallery-classic', function () {
+    return Inertia::render('galleryclassic/gallery-classic');
+})->name('galleryclassic');
+
+
+Route::get('/gallery-masonry', function () {
+    return Inertia::render('gallerymasonry/gallery-masonry');
+})->name('gallerymasonry');
+
+
+Route::get('/right-sidebar-default-page', function () {
+    return Inertia::render('rightsidebar/right-sidebar');
+})->name('rightsidebar');
+
+
+
+Route::get('/left-sidebar-default-page', function () {
+    return Inertia::render('leftsidebar/left-sidebar');
+})->name('leftsidebar');
+
+
+Route::get('/full-width-default-page', function () {
+    return Inertia::render('defaultpage/default-page');
+})->name('defaultpage');
+
+
+
+Route::get('/cases', function () {
+    return Inertia::render('cases/cases');
+})->name('cases');
+
 
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
